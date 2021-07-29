@@ -4,6 +4,9 @@
 #include "stdlib.h"
 #include "opencv2/opencv.hpp"
 #include "image.h"
+#include "opencv2/core/core_c.h"
+#include "opencv2/videoio/legacy/constants_c.h"
+#include "opencv2/highgui/highgui_c.h"
 
 using namespace cv;
 
@@ -60,7 +63,7 @@ Mat image_to_mat(image im)
 
 image mat_to_image(Mat m)
 {
-    IplImage ipl = m;
+    IplImage ipl = cvIplImage(m);
     image im = ipl_to_image(&ipl);
     rgbgr_image(im);
     return im;
